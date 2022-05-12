@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="grid-container">
+  <div class="profile" *ngIf="user || timeline">
+    <img [src]="user.avatar" class="avatar">
+    <h2 style="margin-bottom:0px">{{user.name}}</h2>
+    <small style="font-size:16px">{{user.email}}</small>
+    <br>
+    <table>
+        <tr><td>Location :<td>{{user.location}}</tr>
+        <tr><td>Gender :<td>{{user.gender}}</tr>
+        <tr><td>Friends :<td>{{user.friends}}</tr>
+    </table>
+    <div>
+      <a (click)="listPublishers()"><button *ngIf="!timeline" type="button" name="button" style="width:150px">View Publisher's</button></a>
+      <a [routerLink]="['/bid/']"><button *ngIf="!timeline" type="button" name="button" style="width:150px">Create Bid</button></a>
+    </div>
+  </div>
+  <div class="content overflowTest"  *ngIf="timeline">
+    <h3><b>Recent Posts :</b></h3><br>
+      <ul *ngFor="let post of user.posts">
+          <li class="posts-container">
+              <img [src]="post.picture" class="post-pic">
+              <div *ngIf="post.likes" class="post-content">
+                <b> Post Title:</b> <small>{{ post.message }}</small><br>
+                <b> likes:</b> {{ post.likes.summary.total_count }}<br>
+                <b> Comments:</b> {{ post.comments.summary.total_count }}
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div class="content overflowTest"  *ngIf="!timeline && !show">
+    <h3><b>Recenetly Given Ad's :</b></h3><br>
+      <ul *ngFor="let post of user.posts">
+          <li class="posts-container">
+              <img [src]="post.picture" class="post-pic">
+              <div *ngIf="post.likes" class="post-content">
+                <b> Post Title:</b> <small>{{ post.message }}</small><br>
+                <b> likes:</b> {{ post.likes.summary.total_count }}<br>
+                <b> Comments:</b> {{ post.comments.summary.total_count }}
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div class="content overflowTest"  *ngIf="!timeline && show">
+    <h3><b>Publisher's :</b></h3><br>
+      <ul *ngFor="let publishers of publishers">
+          <li class="posts-container">
+              <img [src]="publishers.avatar" style="height:100px;width:100px;">
+              <div class="post-content">
+                <b> Name:</b> <a [routerLink]="['/publish_prof/'+publishers.id]" >{{ publishers.name }}</a><br>
+                <b> Email:</b> {{ publishers.email }}<br>
+                <b> Location:</b> {{ publishers.location }}<br>
+                <b> Gender:</b> {{ publishers.gender }}<br>
+                <b> Friends:</b> {{ publishers.friends }}
+              </div>
+          </li>
+      </ul>
+  </div>
+</div>
+<app-footer></app-footer>

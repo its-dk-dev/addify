@@ -1,0 +1,10 @@
+<div>
+	<p>Addify</p>
+	<ul *ngIf="user">
+		<li style="width:200px"> <a [routerLink]="['/dashboard/'+user.id]">{{ user.name }}</a></li>
+		<li><a [routerLink]="['/dashboard/'+user.id]">Dashbord <i class="fas fa-tachometer-alt"></i></a></li>
+		<li><a [routerLink]="['/chat/'+548422312268760]">Chat <i class="fas fa-tachometer-alt"></i></a></li>
+		<li>Notification  <i class="fas fa-bell"></i></li>
+		<li><a (click)="logout()" routerLinkActive="active">LogOut <i class="fas fa-sign-out-alt"></i></a></li>
+	</ul>
+</div>

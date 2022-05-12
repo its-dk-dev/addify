@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="grid-container">
+  <div class="profile">
+    <img [src]="user.avatar" class="avatar">
+    <h2 style="margin-bottom:0px">{{user.name}}</h2>
+    <small style="font-size:16px">{{user.email}}</small>
+    <br>
+    <table>
+        <tr><td>Location :<td>{{user.location}}</tr>
+        <tr><td>Gender :<td>{{user.gender}}</tr>
+        <tr><td>Friends :<td>{{user.friends}}</tr>
+    </table>
+  </div>
+  <div class="content" >
+    <div class="chatbar">
+      <a [routerLink]="['/publish_prof/'+chatwith.id]" ><img [src]="chatwith.avatar" class="icon"></a>
+      <h2>{{chatwith.name}}</h2>
+    </div>
+    <div class="chat overflowTest" [(ngModel)]="clr">
+        <div class="me"  *ngFor="let me of MyArray">
+          <p> {{me.msg}}<small style="font-size:10px;padding-left:5px;">{{me.timestamp}}</small></p>
+        </div>
+        <div class="you" *ngFor="let you of YourArray">
+          <p >{{you.msg}}<small style="font-size:10px;padding-left:5px;">{{you.timestamp}}</small></p>
+        </div>
+    </div>
+    <div class="txtbox">
+      <textarea [(ngModel)]="msg" (keyup.enter)="send(chatwith.id)" name="name" rows="2" cols="80" placeholder="Type a message"></textarea>
+      <a (click)="send(chatwith.id)"><img src="../assets/img/arrow.png" alt=""></a>
+    </div>
+  </div>
+</div>

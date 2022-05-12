@@ -1,0 +1,35 @@
+.containers{
+  height: 165px;
+  background-color: #1C1E21;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  div{
+    margin-top: 30px;
+  }
+
+  small{
+    font-size: 14px;
+    letter-spacing: .5px;
+    color: white;
+    line-height: 40px;
+  }
+
+  p{
+    font-size:90px;
+    margin-top:50px;
+    margin-left: -130px;
+    display:flex;
+  }
+
+  .inline{
+    list-style-type:none;
+    display: flex;
+    justify-content: space-between;
+
+    li{
+      letter-spacing: .5px;
+    }
+  }
+}

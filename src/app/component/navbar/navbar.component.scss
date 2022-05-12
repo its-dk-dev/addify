@@ -1,0 +1,44 @@
+img{
+	height: 100vh;
+	width:100%;
+}
+
+div{
+	margin-left:0px;
+	padding-left:0px;
+	background-color:transparent;
+	height:50px;
+	width: 100%;
+	display:flex;
+	justify-content: space-between;
+
+	p{
+		margin-top: 5px;
+		margin-left:15px;
+		letter-spacing: 2px;
+		font-family: 'Charmonman', cursive;
+		font-size: 25px;
+	}
+
+	ul{
+		margin-top: 0px;
+		margin-left:0px;
+		padding-left:0px;
+		list-style-type:none;
+		align:left;
+
+		li{
+			letter-spacing: .5px;
+			text-align:center;
+			width:120px;
+			float:left;
+			height:35px;
+			padding-top:15px;
+		}
+
+		li:hover{
+			background-color: #F5F5F5;
+		}
+	}
+
+}

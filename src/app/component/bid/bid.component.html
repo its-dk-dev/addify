@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="grid-container">
+  <div class="profile">
+    <h2>Form</h2>
+    <br>
+    <table>
+        <tr><td><b>Title</b><td><input type="text" name="" value="" [(ngModel)]="title"></tr>
+        <tr><td><b>Picture</b><td><input type="file" name="" value="" [(ngModel)]="pic"></tr>
+        <tr><td><b>Description</b><td><input type="text" name="" value="" [(ngModel)]="desc"></tr>
+        <tr><td><b>Deal</b><td><input type="text" name="" value="" [(ngModel)]="deal"placeholder="Enter Amount in Doller $"></tr>
+    </table>
+    <div>
+      <a (click)="submit()"><button type="button" name="button">Submit</button></a>
+      <button type="button" name="button">Reset</button>
+    </div>
+  </div>
+  <div class="content overflowTest">
+    <h3><b>Recent Bid's :</b></h3><br>
+      <ul class="posts-container" style="list-style-type: none;">
+        <li  *ngFor="let vendor of vendors">
+          <img src="../assets/img/cover.jpg" class="post-pic">
+          <div class="post-content">
+            <b> Title:</b> {{vendor.data.title}} <br>
+            <b> Description:</b> {{vendor.data.description}}<br>
+            <b> Deals:</b> {{vendor.data.deal}}
+          </div>
+        </li>
+      </ul>
+  </div>
+</div>
+<app-footer></app-footer>

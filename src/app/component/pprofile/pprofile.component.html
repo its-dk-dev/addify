@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="grid-container">
+  <div class="profile">
+    <img [src]="publishers.avatar" class="avatar">
+    <h2 style="margin-bottom:0px">{{publishers.name}}</h2>
+    <small style="font-size:16px">{{publishers.email}}</small>
+    <br>
+    <table>
+        <tr><td>Location :<td>{{publishers.location}}</tr>
+        <tr><td>Gender :<td>{{publishers.gender}}</tr>
+        <tr><td>Friends :<td>{{publishers.friends}}</tr>
+    </table>
+    <div>
+      <a (click)="bidNow()"><button type="button" name="button">Bid Now</button></a>
+      <a (click)="chatNow(publishers.id)"><button type="button" name="button">Chat Now</button></a>
+    </div>
+  </div>
+  <div class="content overflowTest" *ngIf="!chat && !bid">
+    <h3><b>Recent Posts :</b></h3><br>
+      <ul *ngFor="let post of publishers.posts">
+          <li class="posts-container">
+              <img [src]="post.picture" class="post-pic">
+              <div *ngIf="post.likes" class="post-content">
+                <b> Post Title:</b> <small>{{ post.message }}</small><br>
+                <b> likes:</b> {{ post.likes.summary.total_count }}<br>
+                <b> Comments:</b> {{ post.comments.summary.total_count }}
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div class="content overflowTest" *ngIf="bid">
+    <h3><b>Send Bid's :</b></h3><br>
+      <ul>
+          <li class="posts-container"  *ngFor="let vendor of vendors">
+              <img src="../assets/img/cover.jpg" style="max-width:165px;padding-right:10px">
+              <div class="post-content">
+                <b> Title:</b> {{vendor.data.title}} <br>
+                <b> Description:</b> {{vendor.data.description}}<br>
+                <b> Deals:</b> {{vendor.data.deal}} <br><br><!-- *ngIf="flag != vendor.data.b_id"-->
+              <a (click)="checkFlagForSend(publishers.id,vendor.data.b_id)"><button *ngIf="vflag != vendor.data.b_id && pflag != vid" type="button" name="button">Send Request</button></a>
+              <a (click)="checkFlagForCancel(publishers.id,vendor.data.b_id)"><button *ngIf="vflag == vendor.data.b_id && pflag == vid" type="button" name="button">Cancel Request</button></a>
+            </div>
+          </li>
+      </ul>
+  </div>
+</div>
